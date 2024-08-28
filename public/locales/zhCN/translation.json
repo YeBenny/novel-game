@@ -1,0 +1,6 @@
+{
+    "description": {
+        "part1": "编辑 <1>src/App.js</1> 并保存以测试热模块替换（HMR）",
+        "part2": "学习 React"
+    }
+}
