@@ -1,9 +1,8 @@
-import { Suspense } from 'react'
 import reactLogo from '/assets/react.svg'
 import viteLogo from '/assets/vite.svg'
 import './App.css'
 import { useTranslation, Trans } from 'react-i18next'
-import Counter from './components/counter/Counter'
+import Counter from '../../components/counter/Counter'
 
 // Define a language switcher, matching with the resources in `src/i18n/i18n.ts`,
 // or the file `public/locales`, keeping the file structure untouched.
@@ -58,13 +57,4 @@ function App() {
   )
 }
 
-// export default App
-
-// here app catches the suspense from page in case translations are not yet loaded
-export default function WrappedApp() {
-  return (
-    <Suspense fallback="...is loading">
-      <App />
-    </Suspense>
-  )
-}
+export default App
