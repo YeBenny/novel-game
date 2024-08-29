@@ -1,0 +1,10 @@
+ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+li {
+    display: inline-block;
+    width:  100px;
+}
