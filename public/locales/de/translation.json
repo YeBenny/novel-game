@@ -1,6 +1,6 @@
 {
     "description": {
-        "part1": "Ändere <1>src/App.js</1> und speichere um neu zu laden",
-        "part2": "Lerne React"
+        "part1": "編輯 <1>src/App.js</1> 幷保存以測試熱模塊替換（HMR）",
+        "part2": "學習 React"
     }
 }
