@@ -11,7 +11,7 @@ import Counter from '../../components/counter/Counter'
 const lngs = {
   zhCN: {nativeName: '简体中文'},
   en: {nativeName: 'English'},
-  de: {nativeName: 'Deutsch'}
+  de: {nativeName: '繁體中文'}
 }
 
 function App() {

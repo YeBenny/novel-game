@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Language from '../language/Language'
 import './Header.module.css'
 
 export default function Header() {
@@ -15,6 +16,7 @@ export default function Header() {
           <Link to="/welcome">Welcome</Link>
         </li>
       </ul>
+      <Language />
     </>
   )
 }
