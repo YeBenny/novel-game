@@ -1,5 +1,6 @@
 import reactLogo from '/assets/react.svg'
 import viteLogo from '/assets/vite.svg'
+import reduxLogo from '/assets/redux.svg'
 import './App.css'
 import { useTranslation, Trans } from 'react-i18next'
 import Counter from '../../components/counter/Counter'
@@ -25,11 +26,19 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+        <a href="https://redux.js.org/" target="_blank">
+          <img src={reduxLogo} className="logo" alt="Redux logo" />
+        </a>
         <h2>Vite + React + Redux</h2>
         <div>
           {Object.keys(lngs).map((lng) => (
             // `i18n.resolvedLanguage` is set to the current resolved language
-            <button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+            <button 
+              key={lng} 
+              style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} 
+              type="submit" 
+              onClick={() => i18n.changeLanguage(lng)}
+            >
               {lngs[lng].nativeName}
             </button>
           ))}
