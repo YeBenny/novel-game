@@ -15,6 +15,9 @@ export default function Header() {
         <li>
           <Link to="/welcome">Welcome</Link>
         </li>
+        <li>
+          <Link to="/testTailwind">Tailwind</Link>
+        </li>
       </ul>
       <Language />
     </>

@@ -6,6 +6,7 @@ import Header from '../components/header/Header'
 import App from '../pages/app/App'
 import Welcome from '../pages/welcome/Welcome'
 import TestCounter from '../pages/testCounter/TestCounter'
+import TestTailwind from '../pages/testTailwind/TestTailwind'
 
 // Create and render a browser router
 export const router = createBrowserRouter([
@@ -42,5 +43,16 @@ export const router = createBrowserRouter([
         </Suspense>
       </>
     )
-  }
+  },
+  {
+    path: "/testTailwind",
+    element: (
+      <>
+        <Suspense fallback="...is loading">
+          <Header />
+          <TestTailwind />
+        </Suspense>
+      </>
+    )
+  },
 ])
