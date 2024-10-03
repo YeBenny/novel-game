@@ -1,12 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-// Add Slice Reducers to the Store
-import counterReducer from './reducer/counterSlice'
+import AuthSlice from './reducer/AuthSlice'
 
-// Create a Redux Store with `configureStore`
-export default configureStore({
-  // `configureStore` accepts a reducer function as a named argument
+export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    auth: AuthSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActionPaths: ['auth/connect', 'payload.signClient'],
+        ignoredPaths: ['auth.signClient'],
+      },
+    }),
 })
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
+export type AppStore = typeof store
