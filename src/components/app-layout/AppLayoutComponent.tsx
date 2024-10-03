@@ -5,6 +5,7 @@ import { Col, ConfigProvider, Layout, Row } from 'antd'
 
 import { antdLang } from '../../i18n/ant'
 import { RootState } from '../../redux/store'
+import NavBarComponent from '../navbar/NavBarComponent'
 
 const AppLayoutComponent: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -27,7 +28,9 @@ const AppLayoutComponent: React.FC<{ children: React.ReactNode }> = ({
             boxShadow:
               '0 1px 2px 0 rgba(0, 0, 0, 0.03),0 1px 6px -1px rgba(0, 0, 0, 0.02),0 2px 4px 0 rgba(0, 0, 0, 0.02)',
           }}
-        ></Layout.Header>
+        >
+          <NavBarComponent />
+        </Layout.Header>
         <Layout.Content>
           <Row
             style={{ width: '100vw', maxWidth: 1280, margin: 'auto' }}

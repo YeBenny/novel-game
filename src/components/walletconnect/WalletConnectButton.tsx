@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
-import {
-  DisconnectOutlined,
-  UserOutlined,
-  WalletOutlined,
-} from '@ant-design/icons'
+import { DisconnectOutlined, WalletOutlined } from '@ant-design/icons'
 import { Button, Dropdown, Flex, MenuProps } from 'antd'
 
 import { useAppDispatch } from '../../redux/hooks'
 import { logout } from '../../redux/reducer/AuthSlice'
-import { RootState, store } from '../../redux/store'
-import { disconnectWallet, getAddress } from '../../services/WalletConnect'
+import { RootState } from '../../redux/store'
+import {
+  disconnectWallet,
+  getAddress,
+  pairing,
+} from '../../services/WalletConnect'
 import { formatAddress } from '../../utils'
 
 interface WalletConnectButtonProps {
@@ -35,25 +34,15 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
   const [loading, setLoading] = useState(false)
 
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
   const items: MenuProps['items'] = [
-    {
-      key: 'me',
-      label: (
-        <Flex gap={8}>
-          <UserOutlined />
-          {t('button.me')}
-        </Flex>
-      ),
-    },
     {
       key: 'disconnect',
       label: (
         <Flex gap={8}>
           <DisconnectOutlined />
-          {t('button.disconnect')}
+          {t('navbar.btn.disconnect')}
         </Flex>
       ),
     },
@@ -61,14 +50,34 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
 
   const onClick: MenuProps['onClick'] = ({ key }) => {
     switch (key) {
-      case 'me':
-        navigate('/user')
-        break
       case 'disconnect':
         handleDisconnect()
         break
     }
     handleClose?.()
+  }
+
+  const handleConnect = async () => {
+    if (signClient) {
+      setLoading(true)
+      pairing(
+        signClient,
+        (uri) => {
+          if (import.meta.env.VITE_SCHEME) {
+            window.location.href = `${import.meta.env.VITE_SCHEME}://wcUrl=${uri}`
+          }
+          setLoading(false)
+        },
+        () => {
+          dispatch(login())
+          setAddress(getAddress(signClient))
+        },
+        (error) => {
+          console.error(error)
+          setLoading(false)
+        },
+      )
+    }
   }
 
   const handleDisconnect = async () => {
@@ -80,40 +89,18 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
     setLoading(false)
   }
 
-  useEffect(() => {
-    if (signClient == null) {
-      return
-    }
-    setAddress(getAddress(signClient))
-    const unsubscribe = store.subscribe(() => {
-      setAddress(getAddress(signClient))
-    })
-    return () => unsubscribe()
-  }, [signClient])
-
   return !isLoggedIn || address === '' ? (
-    <Flex gap={16}>
-      <Button
-        type="primary"
-        onClick={() => {
-          navigate('/login')
-          handleClose?.()
-        }}
-        ghost
-      >
-        {t('button.login')}
-      </Button>
-      <Button
-        type="primary"
-        onClick={() => {
-          navigate('/signup')
-          handleClose?.()
-        }}
-        ghost
-      >
-        {t('button.signup')}
-      </Button>
-    </Flex>
+    <Button
+      type="primary"
+      onClick={() => {
+        handleConnect()
+        handleClose?.()
+      }}
+      loading={loading}
+      ghost
+    >
+      {t('navbar.btn.connect')}
+    </Button>
   ) : (
     <Dropdown menu={{ items, onClick }}>
       <Button
@@ -129,3 +116,6 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
 }
 
 export default WalletConnectButton
+function login(): any {
+  throw new Error('Function not implemented.')
+}

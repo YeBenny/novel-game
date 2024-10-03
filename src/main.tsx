@@ -6,15 +6,18 @@ import { RouterProvider } from 'react-router-dom'
 
 import i18n from './i18n/config'
 import './index.css'
+import AppProvider from './providers/AppContext'
 import { store } from './redux/store'
 import { router } from './routes/router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <I18nextProvider i18n={i18n}>
-        <RouterProvider router={router} />
-      </I18nextProvider>
+      <AppProvider>
+        <I18nextProvider i18n={i18n}>
+          <RouterProvider router={router} />
+        </I18nextProvider>
+      </AppProvider>
     </Provider>
   </StrictMode>,
 )
