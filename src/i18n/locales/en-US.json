@@ -6,5 +6,10 @@
       "disconnect": "Disconnect"
     }
   },
+  "sign": {
+    "personal_message": "Welcome to Novel Game!",
+    "wallet_address": "\nWallet address:\n",
+    "timestamp": "\nTimestamp:\n"
+  },
   "footer": "Novel Game @{{year}}"
 }

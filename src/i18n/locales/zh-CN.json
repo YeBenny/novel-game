@@ -6,5 +6,10 @@
       "disconnect": "断开"
     }
   },
+  "sign": {
+    "personal_message": "欢迎来到小说游戏！",
+    "wallet_address": "\n钱包地址：\n",
+    "timestamp": "\n时间戳：\n"
+  },
   "footer": "小说游戏@{{year}}"
 }

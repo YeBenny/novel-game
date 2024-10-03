@@ -6,5 +6,10 @@
       "disconnect": "斷開"
     }
   },
+  "sign": {
+    "personal_message": "歡迎來到小說遊戲！",
+    "wallet_address": "\n錢包地址：\n",
+    "timestamp": "\n時間戳：\n"
+  },
   "footer": "小說遊戲@{{year}}"
 }
