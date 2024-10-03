@@ -14,6 +14,7 @@
     "@ant-design/icons": "^5.4.0",
     "@bxq2011hust/walletconnect-sign-client": "^2.13.2-3",
     "@reduxjs/toolkit": "^2.2.7",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@walletconnect/sign-client": "^2.17.0",
     "antd": "^5.20.3",
     "axios": "^1.7.5",
