@@ -1,4 +1,29 @@
 {
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["*.json5"],
+      "options": {
+        "singleQuote": false,
+        "quoteProps": "preserve"
+      }
+    },
+    {
+      "files": ["*.yml"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^react",
+    "^.(css|scss)$",
+    "<THIRD_PARTY_MODULES>",
+    "^components/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
