@@ -36,9 +36,7 @@ const AppLayoutComponent: React.FC<{ children: React.ReactNode }> = ({
             style={{ width: '100vw', maxWidth: 1280, margin: 'auto' }}
             justify={'center'}
           >
-            <Col xs={24} sm={22}>
-              {children}
-            </Col>
+            <Col span={24}>{children}</Col>
           </Row>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: 'center' }}>
