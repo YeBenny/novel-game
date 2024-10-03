@@ -26,6 +26,7 @@ i18n.use(LngDetector).init({
       translation: zhTW,
     },
   },
+  fallbackLng: 'en-US',
   backend: {
     backends: [LocalStorageBackend],
     backendOptions: [

@@ -1,3 +1,10 @@
 {
+  "navbar": {
+    "title": "小说游戏",
+    "btn": {
+      "connect": "连接钱包",
+      "disconnect": "断开"
+    }
+  },
   "footer": "小说游戏@{{year}}"
 }

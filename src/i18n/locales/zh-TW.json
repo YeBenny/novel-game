@@ -1,3 +1,10 @@
 {
+  "navbar": {
+    "title": "小說遊戲",
+    "btn": {
+      "connect": "連接錢包",
+      "disconnect": "斷開"
+    }
+  },
   "footer": "小說遊戲@{{year}}"
 }

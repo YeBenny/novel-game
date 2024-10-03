@@ -1,3 +1,10 @@
 {
+  "navbar": {
+    "title": "Novel Game",
+    "btn": {
+      "connect": "Connect Wallet",
+      "disconnect": "Disconnect"
+    }
+  },
   "footer": "Novel Game @{{year}}"
 }
