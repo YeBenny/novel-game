@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
@@ -7,7 +7,7 @@ import { DisconnectOutlined, WalletOutlined } from '@ant-design/icons'
 import { Button, Dropdown, Flex, MenuProps } from 'antd'
 
 import { useAppDispatch } from '../../redux/hooks'
-import { logout } from '../../redux/reducer/AuthSlice'
+import { login, logout } from '../../redux/reducer/AuthSlice'
 import { RootState } from '../../redux/store'
 import {
   disconnectWallet,
@@ -70,7 +70,6 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
         },
         () => {
           dispatch(login())
-          setAddress(getAddress(signClient))
         },
         (error) => {
           console.error(error)
@@ -88,6 +87,12 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
     dispatch(logout())
     setLoading(false)
   }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setAddress(getAddress(signClient))
+    }
+  }, [isLoggedIn, signClient])
 
   return !isLoggedIn || address === '' ? (
     <Button
@@ -116,6 +121,3 @@ const WalletConnectButton: React.FC<WalletConnectButtonProps> = ({
 }
 
 export default WalletConnectButton
-function login(): any {
-  throw new Error('Function not implemented.')
-}
