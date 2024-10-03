@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 
+import Loading from '../components/loading/Loading'
 import { useAppDispatch } from '../redux/hooks'
 import { connect } from '../redux/reducer/AuthSlice'
 import { connectWBWallet, connectWallet } from '../services/WalletConnect'
@@ -48,7 +49,7 @@ const AppProvider: React.FC<{
 
   return (
     <AppContext.Provider value={appContext}>
-      {loaded && <div className="darkTheme">{children}</div>}
+      {loaded ? <div className="darkTheme">{children}</div> : <Loading />}
     </AppContext.Provider>
   )
 }
