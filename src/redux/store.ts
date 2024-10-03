@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import AuthSlice from './reducer/AuthSlice'
+import LocaleSlice from './reducer/LocaleSlice'
 
 export const store = configureStore({
   reducer: {
     auth: AuthSlice,
+    locale: LocaleSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
