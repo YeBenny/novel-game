@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from '@reduxjs/toolkit'
 
 // Add Slice Reducers to the Store
 import counterReducer from './reducer/counterSlice'

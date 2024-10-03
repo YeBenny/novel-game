@@ -1,6 +1,0 @@
-{
-    "description": {
-        "part1": "編輯 <1>src/App.js</1> 幷保存以測試熱模塊替換（HMR）",
-        "part2": "學習 React"
-    }
-}

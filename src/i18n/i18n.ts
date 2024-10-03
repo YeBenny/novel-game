@@ -1,7 +1,7 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-http-backend';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+import Backend from 'i18next-http-backend'
 
 i18n
   // loads translations from your server asynchronously
@@ -19,10 +19,10 @@ i18n
     // logs info level to console output
     debug: true,
     // language to use if translations in user language are not available
-    fallbackLng: 'en', 
+    fallbackLng: 'en',
     interpolation: {
       // By default, the values get escaped to mitigate XSS attacks.
-      // You can toggle escaping off, 
+      // You can toggle escaping off,
       // by setting the escapeValue option to false when requesting a translation
       escapeValue: false, // not needed for react as it escapes by default
     },
@@ -33,6 +33,6 @@ i18n
     //     }
     //   },
     // }
-  });
+  })
 
-  export default i18n;
+export default i18n
