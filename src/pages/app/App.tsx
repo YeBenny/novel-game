@@ -46,6 +46,7 @@ function App() {
     signPersonalMessage(signClient, msg)
       .then((data) => {
         if (data?.success) {
+          postMessage('get_address', address)
           dispatch(login())
         } else {
           disconnectWallet(signClient)
@@ -56,6 +57,13 @@ function App() {
         disconnectWallet(signClient)
       })
   }, [dispatch, signClient])
+
+  const postMessage = (action: any, value: any) => {
+    iframeRef.current?.contentWindow?.postMessage(
+      { action: action, value: value },
+      '*',
+    )
+  }
 
   useEffect(() => {
     const handleMessage = (event: any) => {
