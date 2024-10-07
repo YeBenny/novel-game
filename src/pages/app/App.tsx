@@ -27,7 +27,9 @@ function App() {
             window.location.href = `${import.meta.env.VITE_SCHEME}://wcUrl=${uri}`
           }
         },
-        () => {},
+        () => {
+          postMessage('get_address', getAddress(signClient))
+        },
         (error) => {
           console.error(error)
         },
@@ -46,7 +48,7 @@ function App() {
     signPersonalMessage(signClient, msg)
       .then((data) => {
         if (data?.success) {
-          postMessage('get_address', address)
+          postMessage('login', true)
           dispatch(login())
         } else {
           disconnectWallet(signClient)
